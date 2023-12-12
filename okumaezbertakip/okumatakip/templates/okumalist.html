@@ -1,0 +1,59 @@
+
+{% extends "master.html" %}
+{% block govde %}
+
+
+    <div class="container">
+        <div class="form-container">
+            <input type="text" class="form-control" placeholder="Talebe Ara">
+            <button class="btn btn-primary">Talebe Ekle</button>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Ad</th>
+                        <th scope="col">Soyad</th>
+                        <th scope="col">Günlük Sayfa Sayısı</th>
+                        <th scope="col">Detay</th>
+                        <th scope="col">Düzenle</th>
+                        <th scope="col">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">23</th>
+                        <td>Oğuzhan</td>
+                        <td>Kodal</td>
+                        <td>30</td>
+                        <td><button class="btn btn-primary">Detay</button></td>
+                        <td><button class="btn btn-warning">Düzenle</button></td>
+                        <td><button class="btn btn-danger">Sil</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">45</th>
+                        <td>Mahmut</td>
+                        <td>Alan</td>
+                        <td>50</td>
+                        <td><button class="btn btn-primary">Detay</button></td>
+                        <td><button class="btn btn-warning">Düzenle</button></td>
+                        <td><button class="btn btn-danger">Sil</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td>Ahmet Said</td>
+                        <td>Acer</td>
+                        <td>10</td>
+                        <td><button class="btn btn-primary">Detay</button></td>
+                        <td><button class="btn btn-warning">Düzenle</button></td>
+                        <td><button class="btn btn-danger">Sil</button></td>
+                    </tr>
+                    <!-- Daha fazla satır eklenebilir -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+{% endblock %}

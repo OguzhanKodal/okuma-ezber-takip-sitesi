@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+{% block govde %}
+{% load static %}
+
+
+        <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Hoş Geldiniz!</h1>
+            <p class="lead">Okuma-Ezber Takip Sistemi</p>
+            <hr class="my-4">
+            <p>Detaylı bilgi ve hizmetlerimiz için menüyü kullanabilirsiniz.</p>
+        </div>
+
+    <div class="container">
+        <div class="image-container">
+            <div>
+                <a href="../ezbertakip/">
+                    <img
+                        src="{% static 'memorize.png' %}"
+                        alt="Ezber Takip">
+                    <p>Ezber Takip</p>
+                </a>
+            </div>
+            <div>
+                <a href="../okumatakip">
+                    <img
+                        src="{% static 'reading-book.png' %}"
+                        alt="Okuma Takip">
+                    <p>Okuma Takip</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+</body>
+
+</html>

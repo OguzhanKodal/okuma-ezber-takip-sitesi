@@ -1,0 +1,71 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.navbar-brand img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-nav .nav-link:hover {
+    text-decoration: underline;
+}
+
+.container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Image Container */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.image-container div {
+    margin: 0 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.image-container div:hover {
+    transform: scale(1.1);
+}
+
+.image-container img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

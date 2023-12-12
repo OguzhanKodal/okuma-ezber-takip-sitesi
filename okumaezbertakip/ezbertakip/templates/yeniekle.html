@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+
+{% block baslik %}
+Yeni Talebe Ekle
+{% endblock %}
+
+{% block govde %}
+  <div class="container d-flex flex-column align-items-center justify-content-center vh-80">
+    <h2 class="mb-4">Yeni Talebe Bilgilerini Giriniz</h2>
+    <form class="p-4" method="post" action="../yenitalebe/" style="border: 1px solid #ccc; border-radius: 10px;">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="adi" class="form-label">Adı</label>
+        <input type="text" class="form-control" id="adi" name="adi" />
+      </div>
+
+      <div class="mb-3">
+        <label for="soyadi" class="form-label">Soyadı</label>
+        <input type="text" class="form-control" id="soyadi" name="soyadi" />
+      </div>
+
+      <div class="mb-3">
+        <label for="talebeno" class="form-label">Talebe No</label>
+        <input type="number" class="form-control" id="talebeno" name="talebeno" />
+      </div>
+
+      <div class="mb-3">
+        <label for="kayittarihi" class="form-label">Kayıt Tarihi</label>
+        <input type="date" class="form-control" id="kayittarihi" name="kayittarihi" />
+      </div>
+
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="aktiflik" name="aktiflik" />
+          <label class="form-check-label" for="aktiflik"> Aktif </label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">KAYDET</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
