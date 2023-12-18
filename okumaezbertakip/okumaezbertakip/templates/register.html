@@ -1,0 +1,14 @@
+{% extends "master.html" %} {% load static %} {% block baslik %} Yeni üye ekle
+{% endblock %} {% block govde %}
+<form class="row g-3 pt-4" method="post" action="register" novalidate>
+  {% csrf_token %}
+  <div class="row justify-content-center">
+    <div class="col-5">
+      {{ form.as_p }}
+      <div class="col-12 pt-3">
+        <button type="submit" class="btn btn-primary">Kayıt ol</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

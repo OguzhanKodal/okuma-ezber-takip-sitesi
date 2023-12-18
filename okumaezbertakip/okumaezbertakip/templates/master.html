@@ -55,8 +55,12 @@
                 Takip Seç
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="../okumatakip/">Okuma Takip</a></li>
-                <li><a class="dropdown-item" href="../ezbertakip/">Ezber Takip</a></li>
+                <li>
+                  <a class="dropdown-item" href="../okumatakip/">Okuma Takip</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../ezbertakip/">Ezber Takip</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -69,6 +73,25 @@
             />
             <button class="btn btn-outline-light" type="submit">Ara</button>
           </form>
+
+          {% if user.is_authenticated %}
+          <span class="navbar-text ms-3 me-2">
+            <a href="#" class="btn btn-outline-dark"
+              >Hoşgeldin, {{ user.username }}</a
+            >
+          </span>
+          <span class="navbar-text ms-2 me-2">
+            <a href="../logout" class="btn btn-outline-dark">Çıkış Yap</a>
+          </span>
+          {% else %}
+          <span class="navbar-text me-2 ms-2">
+            <a href="../login" class="btn btn-outline-dark">Giriş Yap</a>
+          </span>
+          <span class="navbar-text me-2 ms-2">
+            <a href="../register" class="btn btn-outline-dark">Kayıt Ol</a>
+          </span>
+
+          {% endif %}
         </div>
       </div>
     </nav>
