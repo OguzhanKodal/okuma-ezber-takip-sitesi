@@ -24,13 +24,14 @@ def yenitalebe(request):
         ad = request.POST.get('adi', '')
         soyad = request.POST.get('soyadi', '')
         talebeno = request.POST.get('talebeno', '')
+        ezber = request.POST.get('ezber','')
         kayittarihi = request.POST.get('kayittarihi', '')
         aktiflik = request.POST.get('aktiflik', False)
         if aktiflik == "on":
             aktiflik = True
 
         yeniTalebe = ezbertakip(ad=ad, soyad=soyad, talebeno=talebeno,
-                                kayittarihi=kayittarihi,
+                                ezber = ezber , kayittarihi=kayittarihi,
                                 aktiflik=aktiflik)
         yeniTalebe.save()
         bilgi = {'yenitalebe': "True"}
@@ -56,6 +57,7 @@ def talebeduzenle(request, talebeno):
         talebe.ad = request.POST.get('adi', '')
         talebe.soyad = request.POST.get('soyadi', '')
         talebe.talebeno = request.POST.get('talebeno', '')
+        talebe.ezber = request.POST.get('ezber','')
         talebe.kayittarihi = request.POST.get('kayittarihi', '')
 
         aktiflik = request.POST.get('aktiflik', False)

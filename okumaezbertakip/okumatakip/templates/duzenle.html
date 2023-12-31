@@ -1,0 +1,64 @@
+{% extends "master.html" %}
+
+{% block baslik %}
+Talebe Detayı
+{% endblock %}
+
+{% block govde %}
+<div class="container d-flex flex-column align-items-center justify-content-center vh-80">
+  <h2 class="mb-4">Talebe Detayı</h2>
+  <form class="p-4" id="talebeForm" action : "/duzenle/{{ talebe.talebeno }}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="adi" class="form-label">Adı</label>
+      <input type="text" class="form-control" id="adi" name="adi" value="{{ talebe.ad }}" />
+    </div>
+
+    <div class="mb-3">
+      <label for="soyadi" class="form-label">Soyadı</label>
+      <input type="text" class="form-control" id="soyadi" name="soyadi" value="{{ talebe.soyad }}" />
+    </div>
+
+    <div class="mb-3">
+      <label for="talebeno" class="form-label">Talebe No</label>
+      <input type="number" class="form-control" id="talebeno" name="talebeno" value="{{ talebe.talebeno }}" />
+    </div>
+
+        <div class="mb-3">
+      <label for="okumasayfa" class="form-label">Okuma Sayfa</label>
+      <input type="number" class="form-control" id="okumasayfa" name="okumasayfa" value="{{ talebe.okumasayfa }}" />
+    </div>
+
+    <div class="mb-3">
+      <label for="kayittarihi" class="form-label">Kayıt Tarihi</label>
+      {% if guncellendimi == "True" %}
+      <input type="text" class="form-control" id="kayittarihi" name="kayittarihi" value="{{talebe.kayittarihi}}" />
+      {% else %}
+      <input type="text" class="form-control" id="kayittarihi" name="kayittarihi" value="{{talebe.kayittarihi|date:'Y-m-d'}}" />
+      {% endif %}
+    </div>
+
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="aktiflik" name="aktiflik" {% if talebe.aktiflik %}checked{% endif %} />
+        <label class="form-check-label" for="aktiflik"> Aktif </label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">GÜNCELLE</button>
+    </div>
+  </form>
+
+  {% if guncellendimi == "True" %}
+  <div class="row pt-4" style="padding-left:10px;padding-right:10px">
+    <div class="alert alert-success d-flex align-items-center" role="alert" style="background-color: #28a745; color: white;">
+      <div style="padding-left:5px">
+        Güncellendi
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}
+
+

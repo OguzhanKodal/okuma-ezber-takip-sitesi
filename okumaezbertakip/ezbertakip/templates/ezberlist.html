@@ -1,78 +1,85 @@
 {% extends "master.html" %}
 {% block govde %}
 
-    <div class="container">
-        <div class="form-container">
-            <input type="text" class="form-control" placeholder="Talebe Ara">
-            <a href="../ezbertakip/yenitalebe">
-                <button class="btn btn-primary">Talebe Ekle</button>
-            </a>
-        </div>
+<div class="container">
+    <div class="form-container">
+        <input type="text" class="form-control" placeholder="Talebe Ara">
+        <a href="../ezbertakip/yenitalebe">
+            <button class="btn btn-primary">Talebe Ekle</button>
+        </a>
+    </div>
 
-        <div class="table-container">
-            <table class="table table-bordered">
-                <thead>
+    <div class="table-container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ad</th>
+                    <th scope="col">Soyad</th>
+                    <th scope="col">Şuanki Ezber</th>
+                    <th scope="col">Detay</th>
+                    <th scope="col">Düzenle</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Ekle</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for talebe in ezberlistesi %}
                     <tr>
-                        <th scope="col">Sıra</th>
-                        <th scope="col">Ad</th>
-                        <th scope="col">Soyad</th>
-                        <th scope="col">Şuanki Ezber</th>
-                        <th scope="col">Detay</th>
-                        <th scope="col">Düzenle</th>
-                        <th scope="col">Sil</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for talebe in ezberlistesi %}
-                        <tr>
-                            <th scope="row">{{forloop.counter}}</th>
-                            <td>{{ talebe.ad }}</td>
-                            <td>{{ talebe.soyad }}</td>
-                            <td>{{ talebe.ezber }}</td>
-                            <td>
-                                <a href="detay/{{ talebe.id }}">
-                                    <button class="btn btn-primary">Detay</button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="duzenle/{{ talebe.id }}">
-                                    <button class="btn btn-warning">Düzenle</button>
-                                </a>
-                            </td>
-                            <td>
-                                <form class="" method="post" action="../ezbertakip/" >
-                                    {% csrf_token %}
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#silModal{{ talebe.id }}">
-                                        <i class="bi bi-trash"></i> Sil
-                                    </button>
-                                    <input class="d-none" name="sil" value="{{ talebe.id }}">
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="silModal{{ talebe.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Emin misiniz?</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    {{ talebe.ad }} {{ talebe.soyad }} Kaydını Silmek Üzeresin.
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
-                                                    <button type="submit" class="btn btn-danger">Evet</button>
-                                                </div>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ talebe.ad }}</td>
+                        <td>{{ talebe.soyad }}</td>
+                        <td>{{ talebe.ezber }}</td>
+                        <td>{{ talebe.talebe_set.count}}</td>
+                        <td>
+                            <a href="detay/{{ talebe.id }}">
+                                <button class="btn btn-primary">Detay</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="duzenle/{{ talebe.id }}">
+                                <button class="btn btn-warning">Düzenle</button>
+                            </a>
+                        </td>
+                        <td>
+                            <form class="" method="post" action="../ezbertakip/">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#silModal{{ talebe.id }}">
+                                    <i class="bi bi-trash"></i> Sil
+                                </button>
+                                <input class="d-none" name="sil" value="{{ talebe.id }}">
+                                <!-- Modal -->
+                                <div class="modal fade" id="silModal{{ talebe.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Emin misiniz?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ talebe.ad }} {{ talebe.soyad }} Kaydını Silmek Üzeresin.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                                                <button type="submit" class="btn btn-danger">Evet</button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            </td>                        
-                        </tr>
-                    {% endfor %}
-                    <!-- Daha fazla satır eklenebilir -->
-                </tbody>
-            </table>
-        </div>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="ekle/{{ talebe.id }}">
+                                <button class="btn btn-success">Ekle</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <!-- Daha fazla satır eklenebilir -->
+            </tbody>
+        </table>
     </div>
+</div>
 {% endblock %}
 </body>
 </html>

@@ -5,7 +5,7 @@ from .models import okumadetay
 # Register your models here.
 
 class okumatakipAdmin(admin.ModelAdmin):
-    list_display = ("num", "ad", "soyad", "okumasayfa","kayitTarihi","aktiflik",)
+    list_display = ("talebeno", "ad", "soyad", "okumasayfa","kayittarihi","aktiflik",)
     empty_value_display = "BOŞ"
 
 class okumadetayAdmin(admin.ModelAdmin):

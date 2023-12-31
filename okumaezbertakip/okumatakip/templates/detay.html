@@ -1,0 +1,85 @@
+{% extends "master.html" %} {% load static %} {% block baslik %} Talebe Detayı
+{% endblock %} {% block govde %}
+<form
+  class="row g-3 pt-4"
+  method="post"
+  action="../duzenle/{{talebe.talebeno}}"
+>
+  <div
+    class="container d-flex flex-column align-items-center justify-content-center vh-80"
+  >
+    <h2 class="mb-4">Talebe Detayı</h2>
+    <form class="p-4" id="talebeForm">
+      <div class="mb-3">
+        <label for="adi" class="form-label">Adı</label>
+        <input
+          type="text"
+          class="form-control"
+          id="adi"
+          name="adi"
+          value="{{ talebe.ad }}"
+          readonly
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="soyadi" class="form-label">Soyadı</label>
+        <input
+          type="text"
+          class="form-control"
+          id="soyadi"
+          name="soyadi"
+          value="{{ talebe.soyad }}"
+          readonly
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="talebeno" class="form-label">Talebe No</label>
+        <input
+          type="number"
+          class="form-control"
+          id="talebeno"
+          name="talebeno"
+          value="{{ talebe.talebeno }}"
+          readonly
+        />
+      </div>
+      <div class="mb-3">
+        <label for="okumasayfa" class="form-label">Okuma Sayfa</label>
+        <input
+          type="number"
+          class="form-control"
+          id="okumasayfa"
+          name="okumasayfa"
+          value="{{ talebe.okumasayfa }}"
+          readonly
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="kayittarihi" class="form-label">Kayıt Tarihi</label>
+        <input
+          type="text"
+          class="form-control"
+          id="kayittarihi"
+          name="kayittarihi"
+          value="{{ talebe.kayittarihi|date:'Y-m-d' }}"
+          readonly
+        />
+      </div>
+
+      <div class="mb-3">
+        <div class="form-check">
+          {% if talebe.aktiflik == True %}
+          <input class="form-check-input" type="checkbox" checked disabled />
+          {% else %}
+          <input class="form-check-input" type="checkbox" disabled />
+          {% endif %}
+          <label class="form-check-label"> Aktif </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</form>
+{% endblock %}

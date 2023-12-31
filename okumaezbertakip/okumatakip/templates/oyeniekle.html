@@ -7,7 +7,7 @@
   <form
     class="p-4"
     method="post"
-    action="../yenitalebe/"
+    action="../oyenitalebe/"
     style="border: 1px solid #ccc; border-radius: 10px"
   >
     {% csrf_token %}
@@ -28,8 +28,13 @@
     </div>
 
     <div class="mb-3">
-      <label for="ezber" class="form-label">Ezber</label>
-      <input type="text" class="form-control" id="ezber" name="ezber" />
+      <label for="okumasayfa" class="form-label">Okuma Sayfa</label>
+      <input
+        type="number"
+        class="form-control"
+        id="okumasayfa"
+        name="okumasayfa"
+      />
     </div>
 
     <div class="mb-3">
