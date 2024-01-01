@@ -20,3 +20,4 @@ class ezberdetay(models.Model):
 
     def __str__(self):
         return self.ezberAdi
+

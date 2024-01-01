@@ -30,7 +30,6 @@
                         <td>{{ talebe.ad }}</td>
                         <td>{{ talebe.soyad }}</td>
                         <td>{{ talebe.ezber }}</td>
-                        <td>{{ talebe.talebe_set.count}}</td>
                         <td>
                             <a href="detay/{{ talebe.id }}">
                                 <button class="btn btn-primary">Detay</button>
@@ -73,6 +72,9 @@
                                 <button class="btn btn-success">Ekle</button>
                             </a>
                         </td>
+                    </tr>
+                    <tr>
+                        <!-- Boş bir satır ekleyerek tablonun daha iyi görünmesini sağlar -->
                     </tr>
                 {% endfor %}
                 <!-- Daha fazla satır eklenebilir -->
