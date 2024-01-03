@@ -5,11 +5,11 @@ from .models import ezberdetay
 # Register your models here.
 
 class ezbertakipAdmin(admin.ModelAdmin):
-    list_display = ("talebeno", "ad", "soyad", "ezber","kayittarihi","aktiflik",)
+    list_display = ("talebeno", "ad", "soyad","kayittarihi","aktiflik",)
     empty_value_display = "BOŞ"
 
 class ezberdetayAdmin(admin.ModelAdmin):
-    list_display = ("ezberAdi", "ezbereBasladiğiTarih", "toplamezber")
+    list_display = ("ezberAdi", "ezbereBasladigiTarih", "ezberSayisi")
     empty_value_display = "BOŞ"
 
 admin.site.register(ezbertakip, ezbertakipAdmin)
