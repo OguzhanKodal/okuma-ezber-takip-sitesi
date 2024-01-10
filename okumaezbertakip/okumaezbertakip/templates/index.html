@@ -2,37 +2,46 @@
 {% block govde %}
 {% load static %}
 
+<div class="jumbotron text-center">
+    <h1 class="display-4">Hoş Geldiniz!</h1>
+    <p class="lead">Okuma-Ezber Takip Sistemi</p>
+    <hr class="my-4">
+    <p>Ezber Tarafında Öğrencilerin Ezberlediklerini, Okuma Tarafında Okuduğu Kitapları Takip Ediyoruz.</p>
 
-        <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">Hoş Geldiniz!</h1>
-            <p class="lead">Okuma-Ezber Takip Sistemi</p>
-            <hr class="my-4">
-            <p>Detaylı bilgi ve hizmetlerimiz için menüyü kullanabilirsiniz.</p>
+    <p>Detaylı bilgi ve hizmetlerimiz için menüyü kullanabilirsiniz.</p>
+</div>
+
+<div class="container">
+    <div class="image-container">
+        <div class="card text-center">
+            <a href="../ezbertakip/" class="text-decoration-none text-dark">
+                <img src="{% static 'memorize.png' %}" alt="Ezber Takip" class="img-fluid">
+                <div class="card-body">
+                    <p class="font-weight-bold mt-2">Ezber Takip</p>
+                </div>
+            </a>
         </div>
 
-    <div class="container">
-        <div class="image-container">
-            <div>
-                <a href="../ezbertakip/">
-                    <img
-                        src="{% static 'memorize.png' %}"
-                        alt="Ezber Takip">
-                    <p>Ezber Takip</p>
-                </a>
-            </div>
-            <div>
-                <a href="../okumatakip">
-                    <img
-                        src="{% static 'reading-book.png' %}"
-                        alt="Okuma Takip">
-                    <p>Okuma Takip</p>
-                </a>
-            </div>
+        <div class="card text-center">
+            <a href="../okumatakip" class="text-decoration-none text-dark">
+                <img src="{% static 'reading-book.png' %}" alt="Okuma Takip" class="img-fluid">
+                <div class="card-body">
+                    <p class="font-weight-bold mt-2">Okuma Takip</p>
+                </div>
+            </a>
         </div>
     </div>
+</div>
+
+<!--Yazilim Geliştirme Matematik Bilgisayar Bilimleri-->
+
+
+<div class="jumbotron text-center mt-5">
+    <p class="lead mb-1 font-italic text-muted">Made by 👋  OĞUZHAN KODAL</p>
+    <p class="small text-muted">Student ID: 2000003175</p>
+</div>
+
 
 {% endblock %}
 </body>
-
 </html>

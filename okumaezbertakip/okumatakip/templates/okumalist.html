@@ -3,9 +3,8 @@
 
 <div class="container">
     <div class="form-container">
-        <input type="text" class="form-control" placeholder="Talebe Ara">
         <a href="../okumatakip/oyenitalebe">
-            <button class="btn btn-primary">Talebe Ekle</button>
+            <button class="btn btn-dark">Talebe Ekle</button>
         </a>
     </div>
 
@@ -16,7 +15,6 @@
                     <th scope="col">Sıra</th>
                     <th scope="col">Ad</th>
                     <th scope="col">Soyad</th>
-                    <th scope="col">Sayfa Sayısı</th>
                     <th scope="col">Detay</th>
                     <th scope="col">Düzenle</th>
                     <th scope="col">Sil</th>
@@ -29,9 +27,8 @@
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ talebe.ad }}</td>
                         <td>{{ talebe.soyad }}</td>
-                        <td>{{ talebe.okumasayfa }} </td>
                         <td>
-                            <a href="detay/{{ talebe.id }}">
+                            <a href="odetay/{{ talebe.id }}">
                                 <button class="btn btn-primary">Detay</button>
                             </a>
                         </td>

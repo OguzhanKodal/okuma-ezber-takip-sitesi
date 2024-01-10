@@ -1,0 +1,71 @@
+{% extends "master.html" %} {% block baslik %} Yeni Talebe Ekle {% endblock %}
+{% block govde %}
+<div
+  class="container d-flex flex-column align-items-center justify-content-center vh-80"
+>
+  <h2 class="mb-4">Yeni Okuma Sayfa Sayısını Giriniz</h2>
+  <form class="p-4" method="post" action : "/ekle/{{ talebe.talebeno }}"
+  style="border: 1px solid #ccc; border-radius: 10px" > {% csrf_token %}
+
+  <h2 class="mb-4">Talebe Detayı</h2>
+  <form class="p-4" id="talebeForm">
+    <div class="mb-3">
+      <label for="adi" class="form-label">Adı</label>
+      <input
+        type="text"
+        class="form-control"
+        id="adi"
+        name="adi"
+        value="{{ talebe.ad }}"
+        readonly
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="soyadi" class="form-label">Soyadı</label>
+      <input
+        type="text"
+        class="form-control"
+        id="soyadi"
+        name="soyadi"
+        value="{{ talebe.soyad }}"
+        readonly
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="okuduguKitap" class="form-label">Okuduğu Kitap </label>
+      <input
+        type="text"
+        class="form-control"
+        id="okumaKitap"
+        name="okumaKitap"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="okumayaBasladigiTarih" class="form-label">Okuma Tarihi</label>
+      <input
+        type="date"
+        class="form-control"
+        id="okumayaBasladigiTarih"
+        name="okumayaBasladigiTarih"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="okumaSayfa" class="form-label">Okuduğu Sayfa Sayısı</label>
+      <input
+        type="number"
+        class="form-control"
+        id="okumaSayfa"
+        name="okumaSayfa"
+      />
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">KAYDET</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

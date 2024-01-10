@@ -44,8 +44,10 @@ def yenitalebe(request):
 def talebedetay(request, talebeno):
     kullanici = ezbertakip.objects.get(id=talebeno)
     ezberleri = ezberdetay.objects.filter(kullanici=kullanici)
+    ezbersayfa = ezberdetay.objects.filter(kullanici=kullanici)
 
-    detay = {'talebe': kullanici,'ezberleri':ezberleri}
+    detay = {'talebe': kullanici,'ezberleri':ezberleri,
+             'ezbersayfa' : ezbersayfa}
 
     dsablon = loader.get_template('detay.html')
     return HttpResponse(dsablon.render(detay, request))

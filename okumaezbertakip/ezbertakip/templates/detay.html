@@ -3,7 +3,7 @@
 <form
   class="row g-3 pt-4"
   method="post"
-  action="../duzenle/{{talebe.talebeno}}"
+  action="../detay/{{talebe.talebeno}}"
 >
   <div
     class="container d-flex flex-column align-items-center justify-content-center vh-80"
@@ -70,7 +70,26 @@
       </div>
     </form>
 
-    {% for e in ezberleri%} {{e.ezberAdi}} {%endfor%}
-  </div>
+<div class="mb-3">
+    <label for="ezberleri" class="form-label">Ezberlediği:</label>
+    <div class="d-flex flex-wrap">
+        {% for e in ezberleri %}
+            <div class="p-3 me-3">
+                <span class="badge rounded-pill bg-success text-white fs-7">{{ e.ezberAdi }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="mb-3">
+    <label for="ezbersayfa" class="form-label">Ezberlediği Sayfa:</label>
+    <div class="d-flex flex-wrap">
+        {% for d in ezbersayfa %}
+            <div class="p-3 me-3">
+                <span class="badge rounded-pill bg-success text-white fs-7">{{ d.ezberSayisi }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
 </form>
 {% endblock %}

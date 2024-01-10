@@ -5,11 +5,11 @@ from .models import okumadetay
 # Register your models here.
 
 class okumatakipAdmin(admin.ModelAdmin):
-    list_display = ("talebeno", "ad", "soyad", "okumasayfa","kayittarihi","aktiflik",)
+    list_display = ("talebeno", "ad", "soyad", "kayittarihi","aktiflik",)
     empty_value_display = "BOŞ"
 
 class okumadetayAdmin(admin.ModelAdmin):
-    list_display = ("kitapAdi", "kitapAldigiTarih", "toplamsayfa")
+    list_display = ("okumaKitap", "okumayaBasladigiTarih", "okumaSayfa")
     empty_value_display = "BOŞ"
 
 admin.site.register(okumatakip, okumatakipAdmin)

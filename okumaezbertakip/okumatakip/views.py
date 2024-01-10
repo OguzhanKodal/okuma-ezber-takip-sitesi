@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from django.template import loader
-from .models import okumatakip
+from .models import okumatakip, okumadetay
 from django.views.decorators.csrf import csrf_exempt
 
 def okuma_listesi(request):
@@ -19,6 +19,8 @@ def okuma_listesi(request):
 
 @csrf_exempt
 def yenitalebe(request):
+    if request.user.is_authenticated == False :
+        return redirect("anasayfa")
     bilgi = {'yeniKayit': "False"}
 
     if request.method == 'POST':
@@ -26,13 +28,12 @@ def yenitalebe(request):
         soyad = request.POST.get('soyadi', '')
         talebeno = request.POST.get('talebeno', '')
         kayittarihi = request.POST.get('kayittarihi', '')
-        okumasayfa = request.POST.get('okumasayfa','')
         aktiflik = request.POST.get('aktiflik', False)
         if aktiflik == "on":
             aktiflik = True
 
         yeniTalebe = okumatakip(ad=ad, soyad=soyad, talebeno=talebeno,
-                                kayittarihi=kayittarihi, okumasayfa=okumasayfa,
+                                kayittarihi=kayittarihi, 
                                 aktiflik=aktiflik)
         yeniTalebe.save()
         bilgi = {'yenitalebe': "True"}
@@ -42,12 +43,20 @@ def yenitalebe(request):
 
 
 def talebedetay(request, talebeno):
-    detay = {'talebe': okumatakip.objects.get(id=talebeno)}
-    dsablon = loader.get_template('detay.html')
+    kullanici = okumatakip.objects.get(id=talebeno)
+    okumalari = okumadetay.objects.filter(kullanici=kullanici)    
+    kitaplari = okumadetay.objects.filter(kullanici=kullanici)
+
+    detay = {'talebe': kullanici, 'okumalari':okumalari,
+             'kitaplari':kitaplari}
+
+    dsablon = loader.get_template('odetay.html')
     return HttpResponse(dsablon.render(detay, request))
 
 
 def talebeduzenle(request, talebeno):
+    if request.user.is_authenticated == False :
+        return redirect("anasayfa")
 
     talebe = okumatakip.objects.get(id=talebeno)
 
@@ -59,7 +68,6 @@ def talebeduzenle(request, talebeno):
         talebe.soyad = request.POST.get('soyadi', '')
         talebe.talebeno = request.POST.get('talebeno', '')
         talebe.kayittarihi = request.POST.get('kayittarihi', '')
-        talebe.okumasayfa = request.POST.get('okumasayfa','')
         aktiflik = request.POST.get('aktiflik', False)
         if aktiflik == "on":
             talebe.aktiflik = True
@@ -72,5 +80,29 @@ def talebeduzenle(request, talebeno):
 
     duzenle = {'talebe': talebe, 'guncellendimi': guncellendimi}
 
-    sablon = loader.get_template('duzenle.html')
+    sablon = loader.get_template('oduzenle.html')
     return HttpResponse(sablon.render(duzenle, request))
+
+def okumaekle (request, talebeno):
+    if request.user.is_authenticated == False :
+        return redirect("anasayfa")
+
+    talebe = okumatakip.objects.get(id=talebeno)
+    guncellendimi = "False"
+    if request.method == 'POST':
+
+        okumaKitap = request.POST.get('okumaKitap', '')
+        okumayaBasladigiTarih= request.POST.get('okumayaBasladigiTarih', '')
+        okumaSayfa = request.POST.get('okumaSayfa', '')
+        
+        yeniOkuma = okumadetay(okumaKitap=okumaKitap, okumayaBasladigiTarih=okumayaBasladigiTarih,
+                                 okumaSayfa=okumaSayfa,
+                                kullanici=talebe)
+        yeniOkuma.save()
+
+        guncellendimi = "True"
+
+    ekle = {'talebe': talebe, 'guncellendimi': guncellendimi}
+
+    sablon = loader.get_template('okumaekle.html')
+    return HttpResponse(sablon.render(ekle, request))

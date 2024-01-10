@@ -1,14 +1,11 @@
 {% extends "master.html" %} {% load static %} {% block baslik %} Talebe Detayı
 {% endblock %} {% block govde %}
-<form
-  class="row g-3 pt-4"
-  method="post"
-  action="../duzenle/{{talebe.talebeno}}"
->
+<form class="row g-3 pt-4" method="post" action="../odetay/{{talebe.talebeno}}">
   <div
     class="container d-flex flex-column align-items-center justify-content-center vh-80"
   >
     <h2 class="mb-4">Talebe Detayı</h2>
+
     <form class="p-4" id="talebeForm">
       <div class="mb-3">
         <label for="adi" class="form-label">Adı</label>
@@ -45,17 +42,6 @@
           readonly
         />
       </div>
-      <div class="mb-3">
-        <label for="okumasayfa" class="form-label">Okuma Sayfa</label>
-        <input
-          type="number"
-          class="form-control"
-          id="okumasayfa"
-          name="okumasayfa"
-          value="{{ talebe.okumasayfa }}"
-          readonly
-        />
-      </div>
 
       <div class="mb-3">
         <label for="kayittarihi" class="form-label">Kayıt Tarihi</label>
@@ -80,6 +66,32 @@
         </div>
       </div>
     </form>
+
+    <div class="mb-3">
+      <label for="okumalari" class="form-label">Okuduğu Sayfa Sayısı:</label>
+      <div class="d-flex flex-wrap">
+        {% for a in okumalari %}
+        <div class="p-3 me-3">
+          <span class="badge rounded-pill bg-success text-white fs-7"
+            >{{ a.okumaSayfa }}</span
+          >
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="kitaplari" class="form-label">Okuduğu Kitap:</label>
+      <div class="d-flex flex-wrap">
+        {% for b in kitaplari %}
+        <div class="p-3 me-3">
+          <span class="badge rounded-pill bg-success text-white fs-7"
+            >{{ b.okumaKitap }}</span
+          >
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </form>
 {% endblock %}
